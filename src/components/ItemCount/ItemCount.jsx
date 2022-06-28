@@ -20,7 +20,7 @@ const ItemCount = (handleAdd) => {
         <button onClick={onDecrement}>-</button>
         <button onClick={handleAdd}>Agregar al carrito</button>
       </div>
-    )
-}
+    )}
+
 
 export default ItemCount
