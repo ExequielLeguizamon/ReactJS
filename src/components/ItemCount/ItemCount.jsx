@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 
-const ItemCount = (handleAdd) => {
+const ItemCount = ({handleAdd}) => {
 
     const [counter, setCounter] = useState(0)
     const limitStock = 25
