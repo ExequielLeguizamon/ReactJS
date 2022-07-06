@@ -1,46 +1,51 @@
-import React, { useEffect, useState } from 'react'
-import ItemCount from '../../components/ItemCount/ItemCount'
-import ItemList from '../../components/ItemList/ItemList'
+import React, { useEffect, useState } from 'react';
+import ItemList from '../../components/ItemList/ItemList';
+import { useParams } from 'react-router-dom';
 
-const ItemListContainer = ({greeting}) => {
+const ItemListContainer = ({ greeting }) => {
 
-  const [productos, setProductos] = useState(null)
+  const [productos, setProductos] = useState([])
+  const [productosFiltrados, setProductosFiltrados] = useState([])
+
+  const params = useParams()
+
+  console.log(params);
 
   useEffect(() => {
 
     const getProductos = async () => {
       try {
-        const response = await fetch('/mock/data.json');
-        const data = await response.json();
-        console.log(data);
+        const response = await fetch('https://fakestoreapi.com/products/');
+        const data = await response.json()
         setProductos(data);
+        setProductosFiltrados(data);
       } catch (error) {
         console.log("Hubo un error:");
         console.log(error);
       }
     }
-
-  getProductos()
-
+    getProductos()
   }, [])
 
-console.log(productos);
+  useEffect(() => {
+    if (params?.categoryId) {
+      const productosFiltrados = productos.filter(producto => producto.category === params.categoryId)
+      setProductosFiltrados(productosFiltrados)
+    } else {
+      setProductosFiltrados(productos)
+    }
+  }, [params, productos])
 
-
-const handleAdd = () => {
-  console.log("Se agrego al carrito")
-}
+  console.log(productos);
 
   return (
     <div>
-      <h1>{greeting}</h1>
-      <ItemCount handleAdd={handleAdd}/>
-      {productos ?
-        <ItemList products={productos} />
+      {productos.length !== 0 ?
+        <ItemList products={productosFiltrados} />
         :
-        null
+        <p>Cargando productos...</p>
       }
-    </div> 
+    </div>
   )
 }
 

@@ -3,11 +3,16 @@ import Item from '../Item/Item'
 
 const ItemList = ({products}) => {
   return (
-    <ul>
+    <div style={{
+      display: 'flex',
+      flexDirection: 'row',
+      flexWrap: 'wrap',
+      alignItems: 'center'
+    }}>
         {products.map(producto => {
             return <Item product={producto} key={producto.id}/>
         })}
-    </ul>
+    </div>
   )
 }
 

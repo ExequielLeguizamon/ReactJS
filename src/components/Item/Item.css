@@ -1,0 +1,10 @@
+.card {
+    width: 15%;
+    margin-top: 20px;
+    background-color:peru;
+    border: dotted;
+    padding: 30px;
+    font-size: 20px;
+    box-shadow: 4px 6px 18px 5px rgba(0, 0, 0, 0.85);
+
+}
