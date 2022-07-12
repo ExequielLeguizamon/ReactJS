@@ -1,26 +1,25 @@
-import React from 'react'
-import { useState } from 'react'
+import React, { useState } from 'react'
 
-const ItemCount = ({handleAdd}) => {
+const ButtonCount = ({ onConfirm, maxQuantity }) => {
 
-    const [counter, setCounter] = useState(0)
-    const limitStock = 25
-  
-    const onAdd = () => {
-      if (counter < limitStock) setCounter(counter + 1)
+    const [value, setValue] = useState(1);
+
+    const handleConfirm = () => {
+        if (value <= maxQuantity) {
+            onConfirm(value)
+        }
+        else {
+            alert("Value > maxQuantity")
+        }
     }
-    const onDecrement = () => {
-      if (counter > 0) setCounter(counter - 1)
-    }
-  
     return (
-      <div>
-        <h1>{counter}</h1>
-        <button onClick={onAdd}>+</button>
-        <button onClick={onDecrement}>-</button>
-        <button onClick={handleAdd}>Agregar al carrito</button>
-      </div>
-    )}
+        <div className='countStyle'>
+            <button onClick={() => setValue(value => value+1)}>+</button>
+            <span>{value}</span>
+            <button onClick={() => setValue(value => value-1)}>-</button>
+            <button onClick={handleConfirm}>Confirmar compra</button>
+        </div>
+    )
+}
 
-
-export default ItemCount
+export default ButtonCount
