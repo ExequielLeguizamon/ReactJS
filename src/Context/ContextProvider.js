@@ -3,9 +3,6 @@ import React, { createContext, useState } from 'react'
 export const Shop = createContext(); 
 
 const ContextProvider = ({children}) => {
-
-    const [estadoA, setEstadoA] = useState('Valor por defecto')
-
     const [cart, setCart] = useState([]);
 
     const addItem = (producto, cantidad) => {
@@ -21,14 +18,27 @@ const ContextProvider = ({children}) => {
 
     }
 
+    const removeItem = (id) => {
+        const newItems = cart.filter((producto) => producto.id !== id);
+        setCart(newItems);
+      }
+    
+      const clear = () => {
+        setCart([]);
+      }
+
 
     const isInCart = (producto) => {
         return cart.find(elemento => elemento.id === producto.id)
     }
 
+    const totalItems = () => {
+        return cart.reduce((acc, producto) => acc + producto.quantity, 0);
+      }
+
 
   return (
-    <Shop.Provider value={{estadoA,setEstadoA, addItem, cart,}}>
+    <Shop.Provider value={{ addItem, removeItem, cart, clear, totalItems }}>
         {children}
     </Shop.Provider>
    

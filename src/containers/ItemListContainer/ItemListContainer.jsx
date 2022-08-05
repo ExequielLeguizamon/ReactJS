@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import ItemList from '../../components/ItemList/ItemList';
 import { useParams } from 'react-router-dom';
-import { collection, query, getDocs } from "firebase/firestore";
+import { collection, query, getDocs } from 'firebase/firestore';
 import { db } from '../../Firebase/config';
+import Swal from 'sweetalert2';
 
 
 
-const ItemListContainer = ({ greeting }) => {
+const ItemListContainer = () => {
 
   const [productos, setProductos] = useState([])
   const [productosFiltrados, setProductosFiltrados] = useState([])
 
   const params = useParams()
 
-  console.log(params);
 
   useEffect(() => {
 
@@ -23,18 +23,14 @@ const ItemListContainer = ({ greeting }) => {
         const querySnapshot = await getDocs(q);
         const productos = []
         querySnapshot.forEach((doc) => {
-          // doc.data() is never undefined for query doc snapshots
-          console.log(doc.id, " => ", doc.data());
+          
           productos.push({id: doc.id, ...doc.data()})
         });
 
-        // const response = await fetch('https://fakestoreapi.com/products/');
-        // const data = await response.json()
         setProductos(productos);
         setProductosFiltrados(productos);
       } catch (error) {
-        console.log("Hubo un error:");
-        console.log(error);
+        Swal.fire("Hubo un error:" + error);
       }
     }
     getProductos()

@@ -1,0 +1,224 @@
+.cartFormContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.notShow {
+    display: none;
+}
+
+.cartContainer{
+    background-color: var(--purewhite);
+    width: 800px;
+    margin: 20px auto;
+    border-radius: 5px;
+    padding: 40px 50px;
+    display: flex;
+    flex-direction: column;
+}
+
+.cartContainer table {
+    border-spacing: 0 15px;
+}
+
+.thTable{
+    color:var(--black);
+    border-bottom: 2px solid var(--blue);
+    padding: 10px;
+}
+
+.thTable:first-child {
+    text-align: start;
+}
+
+.cartContainer tbody td {
+    border-bottom: 1px solid var(--white);
+    padding-bottom: 10px;
+}
+
+.tableImg{
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    background-color: var(--purewhite);
+    border: 2px solid var(--purewhite);
+    margin-right: 10px;
+}
+
+.tableProduct {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 450px;
+}
+
+.tablePrice {
+    width: 100px;
+}
+
+.tableTitle, .tablePrice, .tableQty{
+    text-align: center;
+}
+
+.iconDelete {
+    width: 18px;
+    fill: var(--white);
+}
+
+.tableDelete {
+    margin: 0 auto;
+    height: 40px;
+    width: 40px;
+    border-radius: 40px;
+    border: none;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    fill: var(--blue);
+    background-color: var(--grey);
+    transition: 0.4s;
+}
+
+.tableDelete:hover {
+    background-color: var(--black);
+}
+
+.totalPriceL{
+    text-align: end;
+}
+
+.totalPrice{
+    text-align: center;
+}
+
+.totalPrice, .totalPriceL {
+    border-bottom: 2px solid var(--blue);
+}
+
+
+
+.noCartContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+}
+
+.noCartContainer h2 {
+    text-align: center;
+}
+
+.noCartButton{
+    height: 50px;
+    width: 130px;
+    background-color: var(--blue);
+    color: var(--purewhite);
+    margin-top: 20px;
+    border-radius: 10px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.4s;
+}
+
+.noCartButton:hover {
+    background-color: var(--darkblue);
+}
+
+.cartButtons{
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+}
+
+.cartButtons button {
+    width: 200px;
+    margin: 15px;
+}
+
+.cartDeleteBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--grey);
+}
+
+.cartDeleteBtn:hover {
+    background-color: var(--black);
+}
+
+.cartBuyBtn {
+    background-color: var(--blue);
+    color: var(--purewhite);   
+}
+
+.cartBuyBtn:hover {
+    background-color: var(--darkblue);
+}
+
+@media (max-width:768px) {
+
+    thead .cartRows {
+        display: none;
+    }
+
+    tbody .cartRows {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        width: 100%;
+    }
+
+    tfoot .cartRows {
+        display: flex;
+        flex-direction: row-reverse;
+    }
+
+    .totalPriceL {
+        order: 1;
+        padding: 0 15px;
+    }
+
+    .totalPrice {
+        order: 0;
+        padding: 0 5px;
+    }
+
+    .tableProduct {
+        padding-top: 5px;
+        width: 100%;
+    }
+
+    .tableQty {
+        width: 70px;
+    }
+
+    .tablePrice {
+        width: 200px;
+    }
+
+    .cartContainer{
+        width: 90%;
+        margin: 15px auto;
+        padding: 15px;
+    }
+
+    .cartContainer tbody td {
+        border-bottom: none;
+    }
+
+    .cartContainer tbody td:first-child{
+        border-top: 1px solid var(--white);
+    }
+
+    .cartButtons {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .cartButtons button {
+        margin: 8px;
+    }
+}
